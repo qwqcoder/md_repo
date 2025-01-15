@@ -41,8 +41,8 @@
 + l  光标右移
 + k 光标上移
 + j 光标下移
-+ n<space> 光标向右移动n个字符
-+ n<enter> 光标向下移动n行
++ `n<space>` 光标向右移动n个字符
++ `n<enter>` 光标向下移动n行
 + 0  光标移动到本行行首
 + $ 光标移动到本行行尾
 + ^ 光标移动到本行第一个非空白符位置
@@ -164,6 +164,27 @@ export name1=123 # 直接定义环境变量
 declare +x name1 # 环w境变量转自定义变量
 ```
 
+>1.自定义变量,只是局部变量,子进程不能访问
+>2.环境变量,是全局变量,子进程可以访问
+
+
+```bash
+# 局部 -> 全局
+name=qwqcoder
+export name
+declare -x name
+# 全局 -> 局部
+export name=qwqcoder
+declare +x name
+```
+
+>declare 还有其他常用选项
+>
+>+ -r: 设置只读,不可修改
+>+ -i: 设置变量为整数类型
+>+ -a: 设置变量为数组类型
+>+ -f: 设置变量为函数类型
+
 **删除变量**
 
 ```shell
@@ -216,7 +237,10 @@ echo "第四个参数："$4
 + `$?` 上一条命令的退出状态（注意不是stdout，而是exit code）。0表示正常退出，其他值表示错误
 + `$(command) 返回`(command)` 命令的stdout
 
+![默认变量](https://dlink.host/wx2.sinaimg.cn/large/006JEQfJly8hxfxo9mstvj30jf0irmz2.jpg)
 
+![特殊变量](https://dlink.host/wx4.sinaimg.cn/large/006JEQfJly8hxfy2t7yqzj30lc0ak75a.jpg
+)
 
 ## 管道符号'|'
 
@@ -250,6 +274,8 @@ grep -o "pattern" filename
 **定义**
 
 数组用小括号表示，元素之间用空格隔开
+
+> 分隔符是空格`<space>`
 
 ```shell
 array=(1 abc "def" yxc)
@@ -553,143 +579,61 @@ name="acwing yxc"
 
 
 
+# SSH
 
++ 基本使用格式
 
-# Git
+`ssh user@hostname`: user 表示用户名, hostname 表示服务器地址,可以是 ip 或者域名
 
-## 设置git
++ 配置文件
 
-```shell
-git config --global user.name qwqcoder
-git config --global user.eamil 1958448979@qq.com
-git config --list # 出现end表示进入了编辑模式,按q退出
+> 通过配置`~/.ssh/config`文件,可以给服务器取别名,省略记忆服务器 ip 或域名
+
+```bash
+Host myserver
+		HostName IP地址或者域名
+		User 用户名
+# 使用 ssh myserver 即可等效为 ssh user@hostname
 ```
 
-1. 创建 git 仓库
++ 创建秘钥 `ssh-keygen`
 
-   ```shell
-   git init
-   ```
++ 免密登录
 
-2. 添加文件到暂存区
+> 如果想免密码登录远程服务器,将生成的公钥复制到该服务器的`.ssh/authorized_keys`文件中
 
-   ```shell
-   # 提交单个文件
-   git add 文件名
-   
-   # 提交当前目录下所有文件
-   git add .
-   ```
+快捷指令 -> `ssh-copy-id myserver`
 
-3. 确认修改
+# SCP
 
-   ```shell
-   # -m 参数提供注释内容
-   git commit -m "注释: 新增了一个版本修改"
-   ```
++ 基本用法 
 
-4. 查看 git 节点
+  命令格式：`scp source destination`
 
-   ```shell
-   git log
-   git log --stat  # 更详细的节点信息
-   ```
+  > 将source路径下的文件复制到destination中 
 
-5. 回溯文件内容
++ 一次复制多个文件：
 
-   ```shell
-   git reset --hard [commit id]
-   git checkout [commit id]
-   ```
+`scp source1 source2 destination`
 
-6. 分支
++ 复制文件夹：
 
-   ```shell
-   # 查看所有分支
-   git branch
-   
-   # 新建分支
-   git branch <branchName>
-   
-   # 删除分支
-   git branch -d 分支名 # -D 强制删除
-   
-   # 强制改变分支指向
-   git branch -f <branchName> <hashId> # git branch -f main HEAD^^
-   
-   # 合并分支
-   git merge develop # 合并develop分支给当前分支
-   
-   # 更改分支名称
-   git branch -m master main # 将分支master更改成 main
-   
-   
-   # 切换分支
-   git switch <branchName> 
-   git switch -c <newBranchName> # 有一个 -c 参数, 支持直接创建分支并转移到该分支
-   git switch - # 切换到之前的一个分支
-   # ----------------------------------------
-   git checkout <branchName>
-   git checkout -b <newBranchName> # 有一个 -b 参数, 支持直接创建分支并转移到该分支
-   ```
+`scp -r ~/tmp myserver:/home/acs/`
 
-   ><font color='orange'>master 分支: 用于保存经过测试的稳定代码</font>
-   >
-   >`git init -b dev` 可以在初始化时创建并跳转到dev分支
-   >
-   >
+```bash
 
-7. 远程仓库
+#将本地家目录中的tmp文件夹复制到myserver服务器中的/home/acs/目录下。
+scp -r ~/tmp myserver:homework/
 
-   ```shell
-   # 将推送链接设置为https://github.com/qwqcoder/test 并取别名 origin
-   git remote add origin https://github.com/qwqcoder/test
-   
-   # 查看所有推送链接
-   git remote -v
-   
-   # 将本地参考链接到远程仓库 
-   git remote
-   
-   # 添加与移除
-   git remote add 仓库名 地址
-   git remote rm 仓库名
-   ```
+#将本地家目录中的tmp文件夹复制到myserver服务器中的~/homework/目录下。
+scp -r myserver:homework .
 
-8. 推送分支
+#将myserver服务器中的~/homework/文件夹复制到本地的当前路径下。
+#指定服务器的端口号：
+scp -P 22 source1 source2 destination
 
-   ```shell
-   git push <remote> <branch> # remote为远程仓库名称, branch表示推送的本地分支名称
-   # -u 或 --set-upstream 参数 将当前分支与远程仓库分支关联,以后git push或git pull就不需要指定远程仓库和本地分支
-   git push -u origin master
-   # -f 或 -force 参数, 强制推送, 覆盖远程仓库中的内容
-   git push -f origin master
-   # --all 推送所有分支到远程仓库
-   git push --all origin
-   # --help
-   git push --help
-   ```
-
-9. 撤销分支
-
-   ```shell
-   # 撤销一次更改
-   git reset HEAD^
-   
-   # 更改远程仓库
-   git revert <branchName>
-   ```
-
-10. 添加tag
-
-    ```shell
-    git tag v1 <branchName>/<hashID>
-    ```
-
-11. 查询距离<ref>最近的tag
-
-    ```shell
-    git describe <ref>
-    ```
-
+#注意： scp的-r -P等参数尽量加在source和destination之前。
+#使用scp配置其他服务器的vim和tmux
+scp ~/.vimrc ~/.tmux.conf myserver:
+```
 

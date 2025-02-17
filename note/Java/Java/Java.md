@@ -47,7 +47,7 @@
 
   + ==JVM本身不允许跨平台，跨平台的是Java程序==
 
-# 开发步骤
+## 开发步骤
 
 + 编写 test.java 程序
 
@@ -83,7 +83,7 @@ java test #此时不需要文件拓展名
 
 
 
-# JDK的组成
+## JDK的组成
 
 + **JVM (Java Virtual Machine)**： java虚拟机，真正运行java程序的地方
 + **核心类库**：java 自己写好的程序，给程序员的程序调用的
@@ -267,7 +267,7 @@ public class test {
 
 + ==主方法会在程序执行时，自动先加载进入**栈内存**==
 
-# Java内存分区
+## Java内存分区
 
 + 堆
 + 栈
@@ -432,16 +432,6 @@ public boolean equals(Object obj){
 
 
 
-## Math类
-
-
-
-## System类
-
-
-
-==[下面内容详情](D:\project\java_project\relearnJava)==
-
 # 异常
 
 + **概念**：程序在编译或执行中，出现的错误
@@ -529,7 +519,7 @@ public class StudentAgeException extends RuntimeException{
   1. **抽象类不能实例化**
      + **原因**: 因为抽象方法没有实现, 不能真的调用, 所有实例化抽象类没有意义
   2. **抽象类存在构造方法**
-     + **原因**: 子类需要用super访问父类的属性和方法
+     + **原因**: 子类需要用`super`访问父类的属性和方法
   3. **抽象类中可以存在普通方法**
   4. **子类必须实现抽象父类的抽象方法, 否则就把子类也定义为抽象类**
   5. **abstract和static, final, private不能共存**
@@ -545,8 +535,8 @@ public class StudentAgeException extends RuntimeException{
   1. 定义一个抽象类, 其中所有方法都是抽象方法, 没有成员属性和普通方法
   2. 接口不能实例化, 因为它包含抽象方法
   3. 接口类是没有构造方法的
-  4. 接口类中的成员属性, 系统会自动添加pblic, static, final修饰符
-  5. 接口类中的成员方法, 系统会默认添加public, abstract修饰符
+  4. 接口类中的成员==属性==, 系统会自动添加`public`, `static`, `final`修饰符
+  5. 接口类中的成员==方法==, 系统会默认添加`public`, `abstract`修饰符
   6. 接口类允许子类进行多实现, 即子类可以同时继承并实现多个接口
   7. 接口类允许另一个接口类继承并且可以多继承
 
@@ -721,6 +711,10 @@ public class Demo{
   }
    ```
   
+
+# 函数式编程
+
+## 实例方法引用
 
 
 

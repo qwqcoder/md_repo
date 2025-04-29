@@ -17,6 +17,9 @@ git revert #通过新建节点抵消之前的修改内容
 git config --global user.name qwqcoder
 git config --global user.eamil 1958448979@qq.com
 git config --list # 出现end表示进入了编辑模式,按q退出
+
+git config --global http.proxy "socks5://127.0.0.1:7890"
+git config --global https.proxy "socks5://127.0.0.1:7890"
 ```
 
 1. 创建 git 仓库

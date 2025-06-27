@@ -157,3 +157,14 @@ git config --global https.proxy "socks5://127.0.0.1:7890"
 > *解决*
 在 `.gitignore` 文件中添加 `.DS_Store` 
 + 在本地仓库中, 使用 `git checkout origin/main` 远程分支总会分离出 `HEAD` 标签, 因为要防止在本地直接修改远程分支的内容
+
+
+
+```mermaid
+graph TD
+    A[AiChatFragment] --> B[LLamaAPI]
+    B --> C[llama-android.cpp]
+    A --> D[MessageAdapter]
+    A --> E[ChatDbHelper]
+```
+

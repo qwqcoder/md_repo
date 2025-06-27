@@ -14,7 +14,7 @@
 
   `SpringBoot` 的自动配置在应用程序启动时完成, 是 `SpringBoot` 自动完成的
 
-  > `pom` 配置文件中, `<parent>` 标签是指的父工程, 其中锁定了某些依赖的版本信息, 实现了自动配置
+  > `pom` 配置文件中, `<parent>` 标签是指的父工程, 其中锁定了某些依赖的版本信息, 实现了自动配置，==父POM仅负责依赖版本管理，不会自动引入所有依赖==
 
   ```xml
   
@@ -52,14 +52,12 @@
   server.port=8080
   # 虚拟目录, web文件都在虚拟路径下
   server.servlet.context-path=/start
+   ```yaml
+server:
+	port: 8080
+	context-path: /start2
    ```
-  
-  ```yml
-  server:
-  	port: 8080
-  	context-path: /start2
-  ```
-  
+
   `yml` 格式相较于 `properties` 格式更常用, `yml` 更关注参数的值, 层级关系也更清晰, 注意 `yml` 需要在 `:` 之后添加一个空格
 
 + **配置信息的获取**

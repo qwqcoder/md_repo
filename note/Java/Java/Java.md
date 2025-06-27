@@ -434,6 +434,12 @@ public boolean equals(Object obj){
 
 # 异常
 
+👉==[阿里-Java异常处理和最佳实践](https://developer.aliyun.com/article/1182650)==
+
+
+
+
+
 + **概念**：程序在编译或执行中，出现的错误
 
 ![image-20231108182136400](Java.assets/image-20231108182136400.png)
@@ -441,6 +447,8 @@ public boolean equals(Object obj){
 
 
 + **异常体系**
+
+![](https://dlink.host/wx4.sinaimg.cn/large/006JEQfJly8hzxpxvi0smj30u00cbq40.jpg)
 
 ![image-20231108182341035](Java.assets/image-20231108182341035.png)
 

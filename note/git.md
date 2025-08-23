@@ -57,6 +57,7 @@ git config --global https.proxy "socks5://127.0.0.1:7890"
    ```shell
    git reset --hard [commit id]
    git checkout [commit id]
+   git checkout -- xxx  # 例如：git checkout -- file.txt 可以清空工作区的修改内容
    ```
 
 6. 分支

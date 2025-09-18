@@ -1,13 +1,22 @@
 #!/usr/bin/env sh
 
-# 确保脚本抛出遇到的错误
+# 确保脚本在遇到错误时立即退出
 set -e
- 
-# 保存和提交所有修改
+
+# 1. 保存所有修改到暂存区
+echo "将所有修改添加到暂存区..."
 git add -A
+
+# 2. 提交暂存区内容，如果工作区没有修改，则跳过此步
+echo "提交本地修改..."
 git commit -m 'general update' || true
 
-git remote remove origin
-git remote add origin git@github.com:qwqcoder/md_repo.git
+# 3. 拉取远程仓库的最新内容，避免冲突
+echo "拉取远程仓库最新内容..."
+git pull
 
-git push -f origin main
+# 4. 强制推送本地内容到远程仓库
+echo "强制推送至远程仓库..."
+git push origin main
+
+echo "操作完成！"

@@ -11,12 +11,12 @@ git add -A
 echo "提交本地修改..."
 git commit -m 'general update' || true
 
-# 3. 拉取远程仓库的最新内容，避免冲突
+# 3. 拉取远程仓库的最新内容，并显式指定远程分支
 echo "拉取远程仓库最新内容..."
-git pull
+git pull origin main
 
 # 4. 强制推送本地内容到远程仓库
 echo "强制推送至远程仓库..."
-git push origin main
+git push -f origin main
 
 echo "操作完成！"

@@ -70,3 +70,29 @@
 console.log(this.$store.getters.token)
 ```
 
+
+
+# jvxetable获取修改数据
+
+```js
+const xTable = this.$refs.addressTable.$refs.vxe.$refs.xTable
+      const insertRecords = xTable.getInsertRecords();
+      const updateRecords = xTable.getUpdateRecords();
+      const deleteRecords = xTable.getRemoveRecords();
+```
+
+# moment
+
+```js
+// Moment.js 是一个用于解析、验证、操作和显示日期和时间的 JavaScript 库。以下是当前代码中使用到的及常用 API 介绍：
+// 1. moment()：创建一个当前时间的 Moment 对象
+// 2. moment().startOf('month')：将 Moment 对象设置为本月的第一天的 00:00:00
+// 3. current < moment().startOf('month')：比较两个日期，判断 current 是否早于本月第一天
+// 常用 API 还包括：
+// - moment(date)：解析传入的日期字符串或时间戳为 Moment 对象
+// - moment().format('YYYY-MM-DD')：将 Moment 对象格式化为指定格式的字符串
+// - moment().add(1, 'days')：在当前日期上增加指定的时间量
+// - moment().subtract(1, 'months')：在当前日期上减少指定的时间量
+// - moment().isSame(moment(), 'day')：判断两个日期是否在同一时间单位（如天、月、年）内
+```
+

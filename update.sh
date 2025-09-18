@@ -7,7 +7,7 @@ set -e
 git add -A
 git commit -m 'general update'
 
+git remote remove origin
 git remote add origin git@github.com:qwqcoder/md_repo.git
+
 git push -f origin main
- 
-cd -

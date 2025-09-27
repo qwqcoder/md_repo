@@ -71,7 +71,7 @@ javac test.java
 
 + 得到`test.class`文件
 
-![image-20231104110332545](Java.assets/image-20231104110332545.png)
+![image-20231104110332545](https://s2.loli.net/2025/09/18/FBcAwfz5XZ1JHqd.png)
 
 + 运行`test`类
 
@@ -242,12 +242,12 @@ public class test {
 
 ```java
 /*
-        计算机中进制的分类:
-            * 十进制: 默认
-            * 二进制: 0b开头
-            * 八进制: 0开头
-            * 十六进制: 0x开头
- */
+	计算机中进制的分类:
+    * 十进制:	默认
+    * 二进制:  0b开头
+    * 八进制:	0开头
+    * 16进制:	0x开头
+*/
 public class test {
     public static void main(String[] args) {
         System.out.println(110);
@@ -378,7 +378,7 @@ public class demo{
 
 # 对象
 
-+ **父类中的private属性被子类继承后, 子类事实上是继承到了该属性,只是没办法直接访问和修改,需要借助父类中的`public int get()`以及`public void set()`函数来操作private属性**
+> **父类中的private属性被子类继承后, 子类事实上是继承到了该属性,只是没办法直接访问和修改,需要借助父类中的`public int get()`以及`public void set()`函数来操作private属性**
 
 ![image-20231105180815517](Java.assets/image-20231105180815517.png)
 
@@ -489,7 +489,7 @@ public class demo {
     public static void main(String[] args) {
         try{
 	    	setAge(10);
-        }catch(Exception){
+        }catch(Exception e){
             System.out.println("年龄范围有误，需要0~120之间的年龄。");
         }
     }

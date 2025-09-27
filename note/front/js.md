@@ -49,3 +49,50 @@
 + `__prototype__` 隐式原型，在对象属性中用 `[[prototype]]` 表示，所有对象都有一个隐式原型指向==方法对象==的原型
 + `constructor` 构造器，原型包含一个 `constructor` 指向方法函数
 
+
+
+
+
+# WebApi
+
++ documnet.body: 获取 body 元素
++ document.documentElement: 获取整个 html 元素
++ document.getElementById(id): 通过 id 获取元素
++ document.getElementByName(name): 通过 name 获取元素
++ document.**getElementsByTagName(tag)**: 通过标签名获取元素
++ document.**getElementsByClassName(class)**: 通过类样式获取元素
++ document.**querySelector(selector)**: 通过 CSS 样式选择器获取元素
++ document.**querySelectorAll(selector)**: 通过 CSS 选择器获取元素
+
+> ==注意==
+>
+> `querySelectorAll` 方法获取的是一个静态的伪数组,其他方法获取的则是一个实时动态的伪数组
+>
+> 有`id`的元素会自动成为`window`对象的属性,可以直接引用,但是不建议使用
+
+![image-20250920235247917](https://s2.loli.net/2025/09/20/BmOQ4f61Suew3vr.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
